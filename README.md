@@ -2,6 +2,7 @@
 
 ### Step Zero: Prerequisites
 
+0. Clone this repo
 1. Request an account to the support (support-icit@epfl.ch)
 2. If you plan to use a shared storage, request a volume  to the support
 3. Install and Set Up kubectl - https://kubernetes.io/docs/tasks/tools/install-kubectl/
@@ -9,4 +10,9 @@
 ```sh
 $ kubectl get pods     
 No resources found
+```
+### Step One: Create your first Pod (Container)
+```sh
+$ kubectl create -f ubuntu.yaml     
+pod "ubuntu" created
 ```
