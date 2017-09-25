@@ -22,3 +22,9 @@ $ kubectl get pods
 NAME      READY     STATUS    RESTARTS   AGE
 ubuntu    1/1       Running   0          13s
 ```
+You can log in to your pod 
+```sh
+$ kubectl exec -it ubuntu -- /bin/bash
+root@ubuntu:/# exit
+exit
+```
