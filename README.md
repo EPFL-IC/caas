@@ -16,3 +16,9 @@ No resources found
 $ kubectl create -f ubuntu.yaml     
 pod "ubuntu" created
 ```
+Now list all pods running:
+```sh
+$ kubectl get pods
+NAME      READY     STATUS    RESTARTS   AGE
+ubuntu    1/1       Running   0          13s
+```
