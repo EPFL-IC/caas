@@ -68,5 +68,13 @@ persistentvolumeclaim "pvc-nfs-caperez-lamp" created
    .... 
    $ kubectl create -f pod-ubuntu-pvc.yaml
    pod "ubuntu" created
+   
+   $ kubectl exec -it ubuntu -- /bin/bash
+   root@ubuntu:/# ls -l /shared_volume
+   total 8
+   drwxr-xr-x 5  999  999 4096 Sep 26 11:33 mysql
+   drwxr-xr-x 2 root root 4096 Sep 26 11:32 nginx
+   root@ubuntu:/# 
    ```
+   We can see the two folders. The pod mounted the shared volume in /shared_volume **(without sub folder)**
    
