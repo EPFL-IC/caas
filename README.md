@@ -37,3 +37,17 @@ exit
 $ kubectl create -f pvc-lamp-project.yaml 
 persistentvolumeclaim "pvc-nfs-caperez-lamp" created
 ```
+2. Create a nginx pod
+```sh
+$ kubectl create  -f pod-nginx.yaml
+pod "caperez-pod-nginx" created
+```
+In this example, the sub folder "nginx" from the PVC will be mounted /var/lib/mysql in the pod
+
+3. Create a mysql pod
+```sh
+$ kubectl create -f pod-mysql.yaml
+pod "caperez-pod-mysql" created
+```
+The sub folder "mysql" from the PVC will be mounted /usr/share/nginx/html in the pod
+
