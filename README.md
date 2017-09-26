@@ -32,6 +32,7 @@ exit
 0. Request a Persistent Volume (**PV**) to the support **(Only admins can create a PV)**, then you will be able to create a Persistent Volume Claims (**PVC**)
 
 1. Edit the file pvc-lamp-project.yaml and replace the name with the value provided by the support, in this case it's with a NFS share
+
 2.0 Create the PVC
 ```sh
 $ kubectl create -f pvc-lamp-project.yaml 
