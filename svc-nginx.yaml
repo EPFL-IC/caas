@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: caperez-svc-nginx
+  labels:
+    name: caperez-svc-nginx
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      name: nginx
+  selector:
+    name: caperez-pod-nginx
