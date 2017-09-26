@@ -58,12 +58,15 @@ persistentvolumeclaim "pvc-nfs-caperez-lamp" created
    
    3.4. Create a ubuntu pod to check the two folders
    ```sh
-   $ kubectl create -f ubuntu.yaml
+   $ kubectl create -f ubuntu-pvc.yaml
    Error from server (AlreadyExists): error when creating "ubuntu.yaml": object is being deleted: pods "ubuntu" already exists
    ```
-   In this case, the ubuntu pod already exist. Suppress it.
+   In this case, the ubuntu pod already exist. Suppress it, wait a while and try again.
    ```sh
    $ kubectl delete -f ubuntu.yaml
    pod "ubuntu" deleted
+   .... 
+   $ kubectl create -f pod-ubuntu-pvc.yaml
+   pod "ubuntu" created
    ```
    
