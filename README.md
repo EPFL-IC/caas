@@ -32,19 +32,21 @@ exit
 0. Request a Persistent Volume (**PV**) to the support **(Only admins can create a PV)**, then you will be able to create a Persistent Volume Claims (**PVC**)
 
 1. Edit the file pvc-lamp-project.yaml and replace the name with the value provided by the support, in this case it's with a NFS share
-2. Create the PVC
+2.0 Create the PVC
 ```sh
 $ kubectl create -f pvc-lamp-project.yaml 
 persistentvolumeclaim "pvc-nfs-caperez-lamp" created
 ```
-2. Create a nginx pod
+2.1 Change the values for the name and the label in yaml files. You can also change settings like the root password with the environment variables in the yaml file for mysql pod
+
+2.2 Create a nginx pod
 ```sh
 $ kubectl create  -f pod-nginx.yaml
 pod "caperez-pod-nginx" created
 ```
 In this example, the sub folder "nginx" from the PVC will be mounted /usr/share/nginx/html  in the pod
 
-3. Create a mysql pod
+2.3 Create a mysql pod
 ```sh
 $ kubectl create -f pod-mysql.yaml
 pod "caperez-pod-mysql" created
