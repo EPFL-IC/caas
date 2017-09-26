@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: caperez-pod-mysql
+  labels:
+    name: caperez-pod-mysql
+spec:
+  containers:
+    - name: mysql
+      image: mysql
+      ports:
+      - containerPort: 3306
+      volumeMounts:
+      - mountPath: /var/lib/mysql
+        name: site-data
+        subPath: mysql
+      env:
+      - name: MYSQL_ROOT_PASSWORD
+        value: s8MpZntb4BDTKrD
+  volumes:
+  - name: site-data
+    persistentVolumeClaim:
+      claimName: pvc-nfs-caperez-lamp
