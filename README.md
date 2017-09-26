@@ -55,4 +55,15 @@ persistentvolumeclaim "pvc-nfs-caperez-lamp" created
    pod "caperez-pod-mysql" created
    ```
    The sub folder "mysql" from the PVC will be mounted /var/lib/mysql in the pod
-
+   
+   3.4. Create a ubuntu pod to check the two folders
+   ```sh
+   $ kubectl create -f ubuntu.yaml
+   Error from server (AlreadyExists): error when creating "ubuntu.yaml": object is being deleted: pods "ubuntu" already exists
+   ```
+   In this case, the ubuntu pod already exist. Suppress it.
+   ```sh
+   $ kubectl delete -f ubuntu.yaml
+   pod "ubuntu" deleted
+   ```
+   
