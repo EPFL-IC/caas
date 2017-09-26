@@ -78,3 +78,32 @@ persistentvolumeclaim "pvc-nfs-caperez-lamp" created
    ```
    We can see the two folders. The pod mounted the shared volume in /shared_volume **(without sub folder)**
    
+### Step Three: Accessing Pods from Outside of the Cluster
+0. Create a service loadbalancer to access the nginx pod from outside the cluster
+```sh
+$ kubectl create -f svc-nginx.yaml
+service "caperez-svc-nginx" created
+```
+The match between your service and the pod is done by the **selector > name** in the yaml file
+
+```sh
+$ kubectl get svc          
+NAME                CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
+caperez-svc-nginx   10.97.55.231   <pending>     80:31804/TCP   41s
+```
+In this example, the service is running on port 31804
+
+Check the host where the service is running
+```sh
+$ kubectl get pod caperez-pod-nginx -o yaml | grep hostIP
+ hostIP: 10.xx.yy.z
+ $ curl -v http://10.xx.yy.z:31804
+* Rebuilt URL to: http://10.xx.yy.z:31804/
+*   Trying 10.xx.yy.z...
+......
+<!DOCTYPE html>
+<html>
+<head>
+<title>Welcome to nginx!</title>
+...... 
+```
