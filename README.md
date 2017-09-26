@@ -43,16 +43,16 @@ persistentvolumeclaim "pvc-nfs-caperez-lamp" created
    3.1. Change the values for the name and the label in yaml files. You can also change settings like the root password with the environment variables in the yaml file for mysql pod
    
    3.2. Create a nginx pod
-```sh
-$ kubectl create  -f pod-nginx.yaml
-pod "caperez-pod-nginx" created
-```
-In this example, the sub folder "nginx" from the PVC will be mounted /usr/share/nginx/html  in the pod
+   ```sh
+   $ kubectl create  -f pod-nginx.yaml
+   pod "caperez-pod-nginx" created
+   ``` 
+   In this example, the sub folder "nginx" from the PVC will be mounted /usr/share/nginx/html  in the pod
    
    3.3. Create a mysql pod
-```sh
-$ kubectl create -f pod-mysql.yaml
-pod "caperez-pod-mysql" created
-```
-The sub folder "mysql" from the PVC will be mounted /var/lib/mysql in the pod
+   ```sh
+   $ kubectl create -f pod-mysql.yaml
+   pod "caperez-pod-mysql" created
+   ```
+   The sub folder "mysql" from the PVC will be mounted /var/lib/mysql in the pod
 
