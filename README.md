@@ -38,7 +38,7 @@ exit
 $ kubectl create -f pvc-lamp-project.yaml 
 persistentvolumeclaim "pvc-nfs-caperez-lamp" created
 ```
-3. Create the pods
+3. Create the Pods
    
    3.1. Change the values for the name and the label in yaml files. You can also change settings like the root password with the environment variables in the yaml file for mysql pod
    
@@ -97,7 +97,8 @@ Check the host where the service is running
 ```sh
 $ kubectl get pod caperez-pod-nginx -o yaml | grep hostIP
  hostIP: 10.xx.yy.z
- $ curl -v http://10.xx.yy.z:31804
+
+$ curl -v http://10.xx.yy.z:31804
 * Rebuilt URL to: http://10.xx.yy.z:31804/
 *   Trying 10.xx.yy.z...
 ......
@@ -106,4 +107,31 @@ $ kubectl get pod caperez-pod-nginx -o yaml | grep hostIP
 <head>
 <title>Welcome to nginx!</title>
 ...... 
+```
+
+### Step Four: Using GPUs inside Pods
+```sh
+$ kubectl create -f pod-ubuntu-gpu.yaml 
+pod "ubuntu-gpu" created
+
+$ kubectl exec -it ubuntu-gpu -- /bin/bash
+root@ubuntu-gpu:/# nvidia-smi                                                                                                                                         
+Tue Sep 26 14:00:03 2017       
++-----------------------------------------------------------------------------+
+| NVIDIA-SMI 375.66                 Driver Version: 375.66                    |
+|-------------------------------+----------------------+----------------------+
+| GPU  Name        Persistence-M| Bus-Id        Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp  Perf  Pwr:Usage/Cap|         Memory-Usage | GPU-Util  Compute M. |
+|===============================+======================+======================|
+|   0  GeForce GTX TIT...  Off  | 0000:04:00.0     Off |                  N/A |
+|  0%   38C    P0    52W / 250W |      0MiB / 12207MiB |      0%      Default |
++-------------------------------+----------------------+----------------------+
+                                                                               
++-----------------------------------------------------------------------------+
+| Processes:                                                       GPU Memory |
+|  GPU       PID  Type  Process name                               Usage      |
+|=============================================================================|
+|  No running processes found                                                 |
++-----------------------------------------------------------------------------+
+root@ubuntu-gpu:/# 
 ```
