@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-ubuntu-apache-php-mysql
+  labels:
+    name: pod-ubuntu-apache-php-mysql
+spec:
+  containers:
+    - name: ubuntu-apache-php-mysql
+      imagePullPolicy: Always
+      image: registryURL/ubuntu-apache-php-mysql
+      command: ['/bin/sh', '-c']
+      args: ['/usr/sbin/apache2ctl -D FOREGROUND']
+     
+--- 
+kind: Service
+apiVersion: v1
+metadata:
+  name: svc-ubuntu-apache-php-mysql
+  labels:
+    name: svc-ubuntu-apache-php-mysql
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 80
+      name: apache
+  selector:
+    name: pod-ubuntu-apache-php-mysql
