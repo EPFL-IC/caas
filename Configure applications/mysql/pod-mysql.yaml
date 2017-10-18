@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: pod-mysql
+  labels:
+    name: pod-mysql
+spec:
+  containers:
+    - name: mysql
+      image: mysql
+      ports:
+      - containerPort: 3306
+      env:
+      - name: MYSQL_ROOT_PASSWORD
+        value: s8MpZntb4BDTKrD
+      - name: MYSQL_DATABASE
+        value: dbForMyApp
+      - name: MYSQL_USER
+        value: userForMyApp
+      - name: MYSQL_PASSWORD
+        value: passStrongMyApp
+      volumeMounts:
+      - name: config-volume
+        mountPath: /etc/mysql/conf.d
+  volumes:
+  - name: config-volume
+    configMap:
+      name: cm-mysql
