@@ -1,0 +1,13 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: svc-mysql
+  labels:
+    name: svc-mysql
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 3306
+      name: mysql
+  selector:
+    name: pod-mysql

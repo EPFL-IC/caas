@@ -1,0 +1,16 @@
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: cm-mysql
+data:
+  mysqld.cnf: |-
+    [mysqld]
+    pid-file        = /var/run/mysqld/mysqld.pid
+    socket          = /var/run/mysqld/mysqld.sock
+    datadir         = /var/lib/mysql
+    #log-error      = /var/log/mysql/error.log
+    # By default we only accept connections from localhost
+    #bind-address   = 127.0.0.1
+    # Disabling symbolic-links is recommended to prevent assorted security risks
+    symbolic-links=0
+    max_connections = 500
