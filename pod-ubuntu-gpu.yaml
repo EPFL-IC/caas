@@ -5,13 +5,6 @@ metadata:
   labels:
     name: ubuntu-gpu
 spec:
-  volumes:
-  - hostPath:
-      path: /usr/lib/nvidia-375/bin
-    name: bin
-  - hostPath:
-      path: /usr/lib/nvidia-375
-    name: lib
   containers:
   - name:  ubuntu-gpu
     image: nvidia/cuda
@@ -20,9 +13,4 @@ spec:
       - infinity
     resources:
       limits:
-        alpha.kubernetes.io/nvidia-gpu: 1
-    volumeMounts:
-    - mountPath: /usr/local/nvidia/bin
-      name: bin
-    - mountPath: /usr/local/nvidia/lib
-      name: lib
+        nvidia.com/gpu: 1 # requesting 1 GPU
