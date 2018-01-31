@@ -29,18 +29,11 @@ root@ubuntu:/# exit
 exit
 ```
 ### Step Two: Using a shared storage across Pods
-0. Request a Persistent Volume (**PV**) to the support **(Only admins can create a PV)**, then you will be able to create a Persistent Volume Claims (**PVC**)
+0. Request a volume to the support (support-icit@epfl.ch)
 
-1. Edit the file pvc-lamp-project.yaml and replace the name with the value provided by the support, in this case it's with a NFS share
-
-2. Create the PVC
-```sh
-$ kubectl create -f pvc-lamp-project.yaml 
-persistentvolumeclaim "pvc-nfs-caperez-lamp" created
-```
-3. Create the Pods
+1. Create the Pods
    
-   3.1. Change the values for the name and the label in yaml files. You can also change settings like the root password with the environment variables in the yaml file for mysql pod
+   1.1. Change the values for the name and the label in yaml files. You can also change settings like the root password with the environment variables in the yaml file for mysql pod
    
    3.2. Create a nginx pod
    ```sh
