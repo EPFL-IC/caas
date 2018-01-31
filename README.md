@@ -39,42 +39,42 @@ exit
    
    1.3. You can also change settings like the root password with the environment variables in the yaml file for mysql pod
    
-   2.1. Create a nginx pod
-   ```sh
-   $ kubectl create  -f pod-nginx.yaml
-   pod "caperez-pod-nginx" created
-   ``` 
-   In this example, the sub folder "nginx" from the shared volume will be mounted /usr/share/nginx/html in the pod
-   
-   2.2. Create a mysql pod
-   ```sh
-   $ kubectl create -f pod-mysql.yaml
-   pod "caperez-pod-mysql" created
-   ```
-   The sub folder "mysql" from the shared volume will be mounted /var/lib/mysql in the pod
-   
-   2.3. Create a ubuntu pod to check the two folders
-   ```sh
-   $ kubectl create -f pod-ubuntu-pvc.yaml
-   Error from server (AlreadyExists): error when creating "ubuntu.yaml": object is being deleted: pods "ubuntu" already exists
-   ```
-   In this case, the ubuntu pod already exist. Suppress it, wait a while and try again.
-   ```sh
-   $ kubectl delete -f ubuntu.yaml
-   pod "ubuntu" deleted
-   .... 
-   $ kubectl create -f pod-ubuntu-pvc.yaml
-   pod "ubuntu" created
-   
-   $ kubectl exec -it ubuntu -- /bin/bash
-   root@ubuntu:/# ls -l /shared_volume
-   total 8
-   drwxr-xr-x 5  999  999 4096 Sep 26 11:33 mysql
-   drwxr-xr-x 2 root root 4096 Sep 26 11:32 nginx
-   root@ubuntu:/# 
-   ```
-   We can see the two folders. The pod mounted the shared volume in /shared_volume **(without sub folder)**
-   
+2. Create a nginx pod
+```sh
+$ kubectl create  -f pod-nginx.yaml
+pod "caperez-pod-nginx" created
+``` 
+In this example, the sub folder "nginx" from the shared volume will be mounted /usr/share/nginx/html in the pod
+
+Create a mysql pod
+```sh
+$ kubectl create -f pod-mysql.yaml
+pod "caperez-pod-mysql" created
+```
+The sub folder "mysql" from the shared volume will be mounted /var/lib/mysql in the pod
+
+Create a ubuntu pod to check the two folders
+```sh
+$ kubectl create -f pod-ubuntu-pvc.yaml
+Error from server (AlreadyExists): error when creating "ubuntu.yaml": object is being deleted: pods "ubuntu" already exists
+```
+In this case, the ubuntu pod already exist. Suppress it, wait a while and try again.
+```sh
+$ kubectl delete -f ubuntu.yaml
+pod "ubuntu" deleted
+.... 
+$ kubectl create -f pod-ubuntu-pvc.yaml
+pod "ubuntu" created
+
+$ kubectl exec -it ubuntu -- /bin/bash
+root@ubuntu:/# ls -l /shared_volume
+total 8
+drwxr-xr-x 5  999  999 4096 Sep 26 11:33 mysql
+drwxr-xr-x 2 root root 4096 Sep 26 11:32 nginx
+root@ubuntu:/# 
+```
+We can see the two folders. The pod mounted the shared volume in /shared_volume **(without sub folder)**
+
 ### Step Three: Accessing Pods from Outside of the Cluster
 Create a service Load Balancer to access the nginx pod from outside the cluster
 ```sh
