@@ -15,4 +15,4 @@ spec:
   volumes:
   - name: site-data
     persistentVolumeClaim:
-      claimName: ic-it-scratch
+      claimName: CHANGE_THIS_VALUE
