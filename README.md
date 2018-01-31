@@ -33,7 +33,9 @@ exit
 
 1. Create the Pods
    
-   1.1. Change the values for the name and the label in yaml files. You can also change settings like the root password with the environment variables in the yaml file for mysql pod
+   1.1. Change the values for the name and the label in yaml files
+   1.2. Change the value for the "claimName" with the name provided by the support
+   1.3. You can also change settings like the root password with the environment variables in the yaml file for mysql pod
    
    3.2. Create a nginx pod
    ```sh
