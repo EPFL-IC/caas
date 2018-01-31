@@ -34,24 +34,26 @@ exit
 1. Create the Pods
    
    1.1. Change the values for the name and the label in yaml files
+   
    1.2. Change the value for the "claimName" with the name provided by the support
+   
    1.3. You can also change settings like the root password with the environment variables in the yaml file for mysql pod
    
-   3.2. Create a nginx pod
+   2.1. Create a nginx pod
    ```sh
    $ kubectl create  -f pod-nginx.yaml
    pod "caperez-pod-nginx" created
    ``` 
-   In this example, the sub folder "nginx" from the PVC will be mounted /usr/share/nginx/html  in the pod
+   In this example, the sub folder "nginx" from the shared volume will be mounted /usr/share/nginx/html in the pod
    
-   3.3. Create a mysql pod
+   2.2. Create a mysql pod
    ```sh
    $ kubectl create -f pod-mysql.yaml
    pod "caperez-pod-mysql" created
    ```
-   The sub folder "mysql" from the PVC will be mounted /var/lib/mysql in the pod
+   The sub folder "mysql" from the shared volume will be mounted /var/lib/mysql in the pod
    
-   3.4. Create a ubuntu pod to check the two folders
+   2.3. Create a ubuntu pod to check the two folders
    ```sh
    $ kubectl create -f pod-ubuntu-pvc.yaml
    Error from server (AlreadyExists): error when creating "ubuntu.yaml": object is being deleted: pods "ubuntu" already exists
