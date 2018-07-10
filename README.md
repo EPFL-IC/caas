@@ -1,4 +1,4 @@
-## Beta-Kubernetes
+## Kubernetes
 
 ### Step Zero: Prerequisites
 
