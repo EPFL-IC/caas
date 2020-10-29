@@ -51,6 +51,10 @@ exit
 ### Host the image on our private registry
 
 ```sh
+$ docker login registryURL
+Authenticating with existing credentials...
+
+Login Succeeded
 $ docker push registryURL/ubuntu-apache-php-mysql
 The push refers to a repository [registryURL/ubuntu-apache-php-mysql]
 ....
