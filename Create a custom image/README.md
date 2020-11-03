@@ -3,6 +3,8 @@
 0. Clone this repo
 1. Install docker - https://www.docker.com/community-edition
 2. You can read the docker documentation to have a better overview - https://docs.docker.com/get-started/part2/
+3. If your using the [epfl registry](https://ic-registry.epfl.ch), login there, create a project and make it public. In the rest of the tutorial `registryUrl` refers to `ic-registry.epfl.ch/projectName` where `projectName` is the project you just created. You can also use other public registries like https://hub.docker.com.
+
 
 ### Create a file Dockerfile
 ```sh
